@@ -1,0 +1,31 @@
+package com.example.annuoaichengzhang.multiplelistviewdemo;
+
+import android.content.Context;
+
+import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
+import com.example.annuoaichengzhang.multiplelistviewdemo.item.BaseItemView;
+import com.example.annuoaichengzhang.multiplelistviewdemo.item.Item1View;
+import com.example.annuoaichengzhang.multiplelistviewdemo.item.Item2View;
+import com.example.annuoaichengzhang.multiplelistviewdemo.item.Item3View;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Created by niehongtao on 16/4/9.
+ */
+public class DemoItemViewFactory {
+
+    public static synchronized BaseItemView createBaseItemView(String type, Context context, DemoEntity demoEntity) {
+        BaseItemView baseItemView = null;
+        if (type.equals("item1")) {
+            baseItemView = new Item1View(context);
+        } else if (type.equals("item2")) {
+            baseItemView = new Item2View(context);
+        } else {
+            baseItemView = new Item3View(context);
+        }
+        baseItemView.setDemoEntity(demoEntity);
+        return baseItemView;
+    }
+}
