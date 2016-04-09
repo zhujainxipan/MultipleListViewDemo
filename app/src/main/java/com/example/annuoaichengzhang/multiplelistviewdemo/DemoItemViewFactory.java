@@ -8,15 +8,12 @@ import com.example.annuoaichengzhang.multiplelistviewdemo.item.Item1View;
 import com.example.annuoaichengzhang.multiplelistviewdemo.item.Item2View;
 import com.example.annuoaichengzhang.multiplelistviewdemo.item.Item3View;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by niehongtao on 16/4/9.
  */
 public class DemoItemViewFactory {
 
-    public static synchronized BaseItemView createBaseItemView(String type, Context context, DemoEntity demoEntity) {
+    public static synchronized BaseItemView createBaseItemView(String type, Context context) {
         BaseItemView baseItemView = null;
         if (type.equals("item1")) {
             baseItemView = new Item1View(context);
@@ -25,7 +22,6 @@ public class DemoItemViewFactory {
         } else {
             baseItemView = new Item3View(context);
         }
-        baseItemView.setDemoEntity(demoEntity);
         return baseItemView;
     }
 }

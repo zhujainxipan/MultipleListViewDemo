@@ -13,7 +13,6 @@ import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
  */
 public abstract class BaseItemView extends FrameLayout {
     protected Context mContext;
-    protected DemoEntity mDemoEntity;
 
     public BaseItemView(Context context) {
         super(context);
@@ -32,10 +31,9 @@ public abstract class BaseItemView extends FrameLayout {
      * 需要把外界的数据传递进来
      * @param demoEntity
      */
-    public void setDemoEntity(DemoEntity demoEntity) {
-        this.mDemoEntity = demoEntity;
-        setListener();
-        initData();
+    public void setData(DemoEntity demoEntity) {
+        initData(demoEntity);
+        setListener(demoEntity);
     }
 
     final private void init() {
@@ -45,13 +43,15 @@ public abstract class BaseItemView extends FrameLayout {
 
     /**
      * 初始化数据
+     * @param demoEntity
      */
-    protected abstract void initData();
+    protected abstract void initData(DemoEntity demoEntity);
 
     /**
      * 初始化点击
+     * @param demoEntity
      */
-    protected abstract void setListener();
+    protected abstract void setListener(DemoEntity demoEntity);
 
     /**
      * 初始化视图

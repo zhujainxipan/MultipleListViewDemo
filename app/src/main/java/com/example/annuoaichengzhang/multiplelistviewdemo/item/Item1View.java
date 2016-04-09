@@ -7,6 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
+import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
 
 /**
  * Created by niehongtao on 16/4/9.
@@ -24,16 +25,16 @@ public class Item1View extends BaseItemView {
     }
 
     @Override
-    protected void initData() {
-        mTv.setText(super.mDemoEntity.getContent());
+    protected void initData(DemoEntity demoEntity) {
+        mTv.setText(demoEntity.getContent());
     }
 
     @Override
-    protected void setListener() {
+    protected void setListener(final DemoEntity demoEntity) {
         mTv.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Item1View.super.mContext, "我是item1", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Item1View.super.mContext, demoEntity.getContent(), Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -67,41 +67,36 @@ public class DemoAdapter extends BaseAdapter{
         int index = getItemViewType(position);
         switch (index) {
             case 0:
-                convertView = bindItem1View(position, convertView);
+                convertView = bindItem1View(convertView);
                 break;
             case 1:
-                convertView = bindItem2View(position, convertView);
+                convertView = bindItem2View(convertView);
                 break;
             case 2:
-                convertView = bindItem3View(position, convertView);
+                convertView = bindItem3View(convertView);
                 break;
         }
+        ((BaseItemView)convertView).setData(mDemoEntities.get(position));
         return convertView;
     }
 
-    private View bindItem3View(int position, View convertView) {
+    private View bindItem3View(View convertView) {
         if (convertView == null) {
-            convertView = DemoItemViewFactory.createBaseItemView("item3", mContext, mDemoEntities.get(position));
-        } else {
-            ((BaseItemView)convertView).setDemoEntity(mDemoEntities.get(position));
+            convertView = DemoItemViewFactory.createBaseItemView("item3", mContext);
         }
         return convertView;
     }
 
-    private View bindItem2View(int position, View convertView) {
+    private View bindItem2View(View convertView) {
         if (convertView == null) {
-            convertView = DemoItemViewFactory.createBaseItemView("item2", mContext, mDemoEntities.get(position));
-        } else {
-            ((BaseItemView)convertView).setDemoEntity(mDemoEntities.get(position));
+            convertView = DemoItemViewFactory.createBaseItemView("item2", mContext);
         }
         return convertView;
     }
 
-    private View bindItem1View(int position, View convertView) {
+    private View bindItem1View(View convertView) {
         if (convertView == null) {
-            convertView = DemoItemViewFactory.createBaseItemView("item1", mContext, mDemoEntities.get(position));
-        } else {
-            ((BaseItemView)convertView).setDemoEntity(mDemoEntities.get(position));
+            convertView = DemoItemViewFactory.createBaseItemView("item1", mContext);
         }
         return convertView;
     }
