@@ -1,6 +1,7 @@
 package com.example.annuoaichengzhang.multiplelistviewdemo.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -64,6 +65,7 @@ public class DemoAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.d(":nht...", "..." + convertView);
         int index = getItemViewType(position);
         switch (index) {
             case 0:
