@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.example.annuoaichengzhang.multiplelistviewdemo.DemoItemViewFactory;
+import com.example.annuoaichengzhang.multiplelistviewdemo.ViewType;
 import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
 import com.example.annuoaichengzhang.multiplelistviewdemo.item.BaseItemView;
-
 import java.util.List;
 
 /**
@@ -19,8 +19,8 @@ public class DemoAdapter extends BaseAdapter{
     private Context mContext;
 
     public DemoAdapter(List<DemoEntity> demoEntities, Context context) {
-        mDemoEntities = demoEntities;
-        mContext = context;
+        this.mDemoEntities = demoEntities;
+        this.mContext = context;
     }
 
     @Override
@@ -35,18 +35,12 @@ public class DemoAdapter extends BaseAdapter{
     @Override
     public int getItemViewType(int position) {
         String type = mDemoEntities.get(position).getType();
-        if (type.equals("item1")) {
-            return 0;
-        } else if (type.equals("item2")) {
-            return 1;
-        } else {
-            return 2;
-        }
+        return ViewType.getIndex(type);
     }
 
     @Override
     public int getViewTypeCount() {
-        return 3;
+        return ViewType.values().length;
     }
 
     @Override
@@ -66,40 +60,11 @@ public class DemoAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Log.d(":nht...", "..." + convertView);
-        int index = getItemViewType(position);
-        switch (index) {
-            case 0:
-                convertView = bindItem1View(convertView);
-                break;
-            case 1:
-                convertView = bindItem2View(convertView);
-                break;
-            case 2:
-                convertView = bindItem3View(convertView);
-                break;
+        String type = mDemoEntities.get(position).getType();
+        if (convertView == null) {
+            convertView = DemoItemViewFactory.createBaseItemView(type, mContext);
         }
         ((BaseItemView)convertView).setData(mDemoEntities.get(position));
-        return convertView;
-    }
-
-    private View bindItem3View(View convertView) {
-        if (convertView == null) {
-            convertView = DemoItemViewFactory.createBaseItemView("item3", mContext);
-        }
-        return convertView;
-    }
-
-    private View bindItem2View(View convertView) {
-        if (convertView == null) {
-            convertView = DemoItemViewFactory.createBaseItemView("item2", mContext);
-        }
-        return convertView;
-    }
-
-    private View bindItem1View(View convertView) {
-        if (convertView == null) {
-            convertView = DemoItemViewFactory.createBaseItemView("item1", mContext);
-        }
         return convertView;
     }
 }
