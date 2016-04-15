@@ -52,5 +52,6 @@ public class Item1View extends BaseItemView {
     @Override
     protected void onWindowVisibilityChanged(int visibility) {
         super.onWindowVisibilityChanged(visibility);
+
     }
 }

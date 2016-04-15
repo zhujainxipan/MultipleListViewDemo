@@ -62,6 +62,7 @@ public class DemoAdapter extends BaseAdapter{
         Log.d(":nht...", "..." + convertView);
         String type = mDemoEntities.get(position).getType();
         if (convertView == null) {
+            Log.d(":nht...", "....convertView == null");
             convertView = DemoItemViewFactory.createBaseItemView(type, mContext);
         }
         ((BaseItemView)convertView).setData(mDemoEntities.get(position));

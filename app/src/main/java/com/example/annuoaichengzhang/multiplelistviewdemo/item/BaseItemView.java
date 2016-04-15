@@ -2,6 +2,7 @@ package com.example.annuoaichengzhang.multiplelistviewdemo.item;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -13,6 +14,7 @@ import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
  */
 public abstract class BaseItemView extends FrameLayout {
     protected Context mContext;
+
 
     public BaseItemView(Context context) {
         super(context);
@@ -63,5 +65,4 @@ public abstract class BaseItemView extends FrameLayout {
      * @return
      */
     protected abstract int getViewLayoutId();
-
 }
