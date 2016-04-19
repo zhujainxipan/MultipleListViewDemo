@@ -36,7 +36,13 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
 
-        
+        findViewById(R.id.lv_bottom).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SplashActivity.this, BottomActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }
