@@ -23,23 +23,26 @@ public class BottomState1 extends AbsBottomState {
         view.findViewById(R.id.bt1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BottomState1.super.mStateContext.state2();
+                mStateContext.state2();
             }
         });
     }
 
     @Override
     protected void state2(LinearLayout linearLayout, Context context) {
-
+        mStateContext.setAbsBottomState(StateContext.bottomState2);
+        mStateContext.state2();
     }
 
     @Override
     protected void state3(LinearLayout linearLayout, Context context) {
-
+        mStateContext.setAbsBottomState(StateContext.bottomState3);
+        mStateContext.state3();
     }
 
     @Override
     protected void state4(LinearLayout linearLayout, Context context) {
-
+        mStateContext.setAbsBottomState(StateContext.bottomState3);
+        mStateContext.state3();
     }
 }

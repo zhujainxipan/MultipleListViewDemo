@@ -13,6 +13,8 @@ import com.example.annuoaichengzhang.multiplelistviewdemo.R;
 public class BottomState2 extends AbsBottomState {
     @Override
     protected void state1(LinearLayout linearLayout, Context context) {
+        mStateContext.setAbsBottomState(StateContext.bottomState1);
+        mStateContext.state1();
 
     }
 
@@ -25,7 +27,7 @@ public class BottomState2 extends AbsBottomState {
         view.findViewById(R.id.bt2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BottomState2.super.mStateContext.state3();
+                mStateContext.state3();
             }
         });
 
@@ -34,11 +36,13 @@ public class BottomState2 extends AbsBottomState {
 
     @Override
     protected void state3(LinearLayout linearLayout, Context context) {
-
+        mStateContext.setAbsBottomState(StateContext.bottomState3);
+        mStateContext.state3();
     }
 
     @Override
     protected void state4(LinearLayout linearLayout, Context context) {
-
+        mStateContext.setAbsBottomState(StateContext.bottomState4);
+        mStateContext.state4();
     }
 }

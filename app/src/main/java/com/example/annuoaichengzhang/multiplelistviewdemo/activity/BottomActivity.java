@@ -31,6 +31,7 @@ public class BottomActivity extends AppCompatActivity {
 
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.bottom_container);
         StateContext stateContext = new StateContext(linearLayout, this);
+        stateContext.setAbsBottomState(StateContext.bottomState1);
         stateContext.state1();
     }
 

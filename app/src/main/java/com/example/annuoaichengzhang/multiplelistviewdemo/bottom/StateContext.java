@@ -29,19 +29,19 @@ public class StateContext {
     }
 
     public void state1() {
-        this.bottomState1.state1(linearLayout, mContext);
+        this.mAbsBottomState.state1(linearLayout, mContext);
     }
 
     public void state2() {
-        this.bottomState2.state2(linearLayout, mContext);
+        this.mAbsBottomState.state2(linearLayout, mContext);
     }
 
     public void state3() {
-        this.bottomState3.state3(linearLayout, mContext);
+        this.mAbsBottomState.state3(linearLayout, mContext);
     }
 
     public void state4() {
-        this.bottomState4.state4(linearLayout, mContext);
+        this.mAbsBottomState.state4(linearLayout, mContext);
     }
 
 
