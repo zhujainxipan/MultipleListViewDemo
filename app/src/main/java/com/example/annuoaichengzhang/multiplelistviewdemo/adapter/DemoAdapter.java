@@ -5,8 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.example.annuoaichengzhang.multiplelistviewdemo.DemoItemViewFactory;
-import com.example.annuoaichengzhang.multiplelistviewdemo.ViewType;
+import com.example.annuoaichengzhang.multiplelistviewdemo.item.DemoItemViewFactory;
 import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
 import com.example.annuoaichengzhang.multiplelistviewdemo.item.BaseItemView;
 import java.util.List;
@@ -35,12 +34,12 @@ public class DemoAdapter extends BaseAdapter{
     @Override
     public int getItemViewType(int position) {
         String type = mDemoEntities.get(position).getType();
-        return ViewType.getIndex(type);
+        return DemoItemViewFactory.ViewType.getIndex(type);
     }
 
     @Override
     public int getViewTypeCount() {
-        return ViewType.values().length;
+        return DemoItemViewFactory.ViewType.values().length;
     }
 
     @Override

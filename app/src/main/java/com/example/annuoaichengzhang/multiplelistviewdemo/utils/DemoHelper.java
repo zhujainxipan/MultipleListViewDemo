@@ -1,4 +1,4 @@
-package com.example.annuoaichengzhang.multiplelistviewdemo;
+package com.example.annuoaichengzhang.multiplelistviewdemo.utils;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
 

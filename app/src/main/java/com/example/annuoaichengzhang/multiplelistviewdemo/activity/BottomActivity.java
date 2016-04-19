@@ -6,8 +6,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
+import com.example.annuoaichengzhang.multiplelistviewdemo.bottom.StateContext;
 
 public class BottomActivity extends AppCompatActivity {
 
@@ -26,6 +28,10 @@ public class BottomActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.bottom_container);
+        StateContext stateContext = new StateContext(linearLayout, this);
+        stateContext.state1();
     }
 
 }
