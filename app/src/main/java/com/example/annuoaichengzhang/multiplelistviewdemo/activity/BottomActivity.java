@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
-import com.example.annuoaichengzhang.multiplelistviewdemo.bottom.StateContext;
 
 public class BottomActivity extends AppCompatActivity {
 
@@ -30,10 +29,8 @@ public class BottomActivity extends AppCompatActivity {
         });
 
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.bottom_container);
-        StateContext stateContext = new StateContext(linearLayout, this);
 
-        stateContext.setAbsBottomState(StateContext.bottomState4);
-        stateContext.state3();
+
     }
 
 }
