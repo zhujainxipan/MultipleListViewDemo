@@ -9,6 +9,8 @@ import android.widget.FrameLayout;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by niehongtao on 16/4/9.
  */
@@ -40,7 +42,7 @@ public abstract class BaseItemView extends FrameLayout {
 
     final private void init() {
         View.inflate(mContext, getViewLayoutId(), this);
-        initView();
+        ButterKnife.inject(this);
     }
 
     /**
@@ -54,11 +56,6 @@ public abstract class BaseItemView extends FrameLayout {
      * @param demoEntity
      */
     protected abstract void setListener(DemoEntity demoEntity);
-
-    /**
-     * 初始化视图
-     */
-    protected abstract void initView();
 
     /**
      * 返回布局id

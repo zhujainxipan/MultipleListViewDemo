@@ -9,12 +9,16 @@ import android.widget.Toast;
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
 import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
 
+import butterknife.InjectView;
+
 /**
  * Created by niehongtao on 16/4/9.
  */
 public class Item1View extends BaseItemView {
 
-    private TextView mTv;
+
+    @InjectView(R.id.content_tv)
+    TextView mContentTv;
 
     public Item1View(Context context) {
         super(context);
@@ -26,12 +30,12 @@ public class Item1View extends BaseItemView {
 
     @Override
     protected void initData(DemoEntity demoEntity) {
-        mTv.setText(demoEntity.getContent());
+        mContentTv.setText(demoEntity.getContent());
     }
 
     @Override
     protected void setListener(final DemoEntity demoEntity) {
-        mTv.setOnClickListener(new OnClickListener() {
+        mContentTv.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Item1View.super.mContext, demoEntity.getContent(), Toast.LENGTH_SHORT).show();
@@ -39,10 +43,6 @@ public class Item1View extends BaseItemView {
         });
     }
 
-    @Override
-    protected void initView() {
-        mTv = (TextView) findViewById(R.id.content_tv);
-    }
 
     @Override
     protected int getViewLayoutId() {
