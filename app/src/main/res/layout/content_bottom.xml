@@ -15,10 +15,43 @@
 
 
     <LinearLayout
-        android:id="@+id/bottom_container"
-        android:layout_width="match_parent"
+        android:id="@+id/ll_btn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/btn_bottom1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="bottom1"
+            />
+
+
+        <Button
+            android:id="@+id/btn_bottom2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="bottom2"
+            />
+
+        <Button
+            android:id="@+id/btn_bottom3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="bottom3"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_container"
+        android:layout_width="800dp"
+        android:layout_height="700dp"
         android:orientation="vertical"
+        android:layout_below="@id/ll_btn"
+        android:background="#cccc"
         >
 
     </LinearLayout>

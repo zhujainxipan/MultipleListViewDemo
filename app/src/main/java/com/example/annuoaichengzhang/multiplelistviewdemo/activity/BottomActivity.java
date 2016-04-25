@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
+import com.example.annuoaichengzhang.multiplelistviewdemo.bottom.BottomViewFactory;
+import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
 
 public class BottomActivity extends AppCompatActivity {
 
@@ -28,7 +30,34 @@ public class BottomActivity extends AppCompatActivity {
             }
         });
 
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.bottom_container);
+        final DemoEntity demoEntity = new DemoEntity();
+        demoEntity.setContent("111111");
+
+        final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.bottom_container);
+
+        findViewById(R.id.btn_bottom1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linearLayout.removeAllViews();
+                linearLayout.addView(BottomViewFactory.createBottomView("bottom1", BottomActivity.this, demoEntity));
+            }
+        });
+
+        findViewById(R.id.btn_bottom2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linearLayout.removeAllViews();
+                linearLayout.addView(BottomViewFactory.createBottomView("bottom2", BottomActivity.this, demoEntity));
+            }
+        });
+
+        findViewById(R.id.btn_bottom3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linearLayout.removeAllViews();
+                linearLayout.addView(BottomViewFactory.createBottomView("bottom3", BottomActivity.this, demoEntity));
+            }
+        });
 
 
     }

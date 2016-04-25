@@ -9,20 +9,16 @@ import java.util.HashMap;
  * Created by niehongtao on 16/4/9.
  */
 public class BottomViewFactory {
-    private static HashMap<String, BaseBottomView> mHashMap = new HashMap();
-    private DemoEntity mDemoEntity;
 
-    public BottomViewFactory(DemoEntity demoEntity, Context context) {
-        initMap(demoEntity, context);
-    }
-
-    private void initMap(DemoEntity demoEntity, Context context) {
-        mHashMap.put("1", new Bottom1View(context, demoEntity));
-        mHashMap.put("2", new Bottom2View(context, demoEntity));
-        mHashMap.put("3", new Bottom3View(context, demoEntity));
-    }
-
-    public static synchronized BaseBottomView createBottomView(String type) {
-        return mHashMap.get(type);
+    public static synchronized BaseBottomView createBottomView(String type, Context context, DemoEntity demoEntity) {
+        BaseBottomView baseBottomView = null;
+        if (type.equals("bottom1")) {
+            baseBottomView = new Bottom1View(context, demoEntity);
+        } else if (type.equals("bottom2")) {
+            baseBottomView = new Bottom2View(context, demoEntity);
+        } else if (type.equals("bottom3")) {
+            baseBottomView = new Bottom3View(context, demoEntity);
+        }
+        return baseBottomView;
     }
 }
