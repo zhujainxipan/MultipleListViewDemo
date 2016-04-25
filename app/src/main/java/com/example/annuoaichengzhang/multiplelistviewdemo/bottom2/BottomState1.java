@@ -10,7 +10,7 @@ public class BottomState1 implements BottomState {
     }
 
     @Override
-    public void click() {
+    public void updateView() {
 
     }
 }

@@ -19,6 +19,6 @@ public class BottomContext {
     }
 
     public void click() {
-        this.mBottomState.click();
+        this.mBottomState.updateView();
     }
 }

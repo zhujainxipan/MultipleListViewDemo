@@ -5,7 +5,7 @@ package com.example.annuoaichengzhang.multiplelistviewdemo.bottom2;
  */
 public class BottomState3 implements BottomState {
     @Override
-    public void click() {
+    public void updateView() {
 
     }
 }
