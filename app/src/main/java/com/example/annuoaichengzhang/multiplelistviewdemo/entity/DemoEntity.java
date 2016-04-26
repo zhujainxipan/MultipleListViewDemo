@@ -7,6 +7,15 @@ public class DemoEntity {
     private String type;
     private String content;
     private boolean isChecked;
+    private boolean isActive;
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
 
     public boolean isChecked() {
         return isChecked;
