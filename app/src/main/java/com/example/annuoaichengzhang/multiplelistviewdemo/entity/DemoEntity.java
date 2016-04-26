@@ -6,6 +6,15 @@ package com.example.annuoaichengzhang.multiplelistviewdemo.entity;
 public class DemoEntity {
     private String type;
     private String content;
+    private boolean isChecked;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setIsChecked(boolean isChecked) {
+        this.isChecked = isChecked;
+    }
 
     public String getType() {
         return type;

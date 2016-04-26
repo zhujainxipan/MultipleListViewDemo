@@ -45,7 +45,7 @@ public class DemoAdapter extends BaseAdapter{
     @Override
     public Object getItem(int position) {
         Object ret = null;
-        if (mDemoEntities == null) {
+        if (mDemoEntities != null) {
             ret = mDemoEntities.get(position);
         }
         return ret;
