@@ -36,8 +36,8 @@ public abstract class BaseItemView extends FrameLayout {
      * @param demoEntity
      */
     public void setData(DemoEntity demoEntity) {
-        initData(demoEntity);
         setListener(demoEntity);
+        initData(demoEntity);
     }
 
     final private void init() {
