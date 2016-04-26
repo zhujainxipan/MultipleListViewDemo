@@ -36,6 +36,7 @@ public abstract class BaseItemView extends FrameLayout {
      * @param demoEntity
      */
     public void setData(DemoEntity demoEntity) {
+        // 顺序必须这样，否则无法解决错位的问题
         setListener(demoEntity);
         initData(demoEntity);
     }
