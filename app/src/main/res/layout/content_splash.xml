@@ -28,5 +28,13 @@
         android:layout_below="@id/mt_lv"
         />
 
+    <Button
+        android:id="@+id/lv_softinputtest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="softinputtest"
+        android:layout_below="@id/lv_bottom"
+        />
+
 
 </RelativeLayout>

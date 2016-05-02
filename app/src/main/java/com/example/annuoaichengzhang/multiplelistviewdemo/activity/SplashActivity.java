@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
+import com.example.annuoaichengzhang.multiplelistviewdemo.softinputtest.ChatTestActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -40,6 +41,14 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SplashActivity.this, BottomActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.lv_softinputtest).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SplashActivity.this, ChatTestActivity.class);
                 startActivity(intent);
             }
         });

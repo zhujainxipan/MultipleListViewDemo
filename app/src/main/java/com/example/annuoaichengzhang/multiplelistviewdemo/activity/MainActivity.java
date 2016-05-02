@@ -26,33 +26,23 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-
         ListView listView = (ListView) findViewById(R.id.post_lv);
         List<DemoEntity> demoEntities = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             DemoEntity demoEntity = new DemoEntity();
             demoEntity.setType("item1");
             demoEntity.setContent("item1:" + i);
             demoEntities.add(demoEntity);
         }
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             DemoEntity demoEntity = new DemoEntity();
             demoEntity.setType("item2");
             demoEntity.setContent("item2:" + i);
             demoEntities.add(demoEntity);
         }
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             DemoEntity demoEntity = new DemoEntity();
             demoEntity.setType("item3");
             demoEntity.setContent("item3:" + i);
