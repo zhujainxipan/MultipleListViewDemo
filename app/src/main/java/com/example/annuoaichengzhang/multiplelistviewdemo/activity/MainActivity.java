@@ -5,9 +5,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
@@ -19,6 +22,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ListView mListView;
+    private DemoAdapter mDemoAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ListView listView = (ListView) findViewById(R.id.post_lv);
+        mListView = (ListView) findViewById(R.id.post_lv);
         List<DemoEntity> demoEntities = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             DemoEntity demoEntity = new DemoEntity();
@@ -49,9 +55,47 @@ public class MainActivity extends AppCompatActivity {
             demoEntities.add(demoEntity);
         }
 
-        DemoAdapter demoAdapter = new DemoAdapter(demoEntities, this);
-        listView.setAdapter(demoAdapter);
+        mDemoAdapter = new DemoAdapter(demoEntities, this);
+        mListView.setAdapter(mDemoAdapter);
+
+
+
+        mListView.setSelection(mDemoAdapter.getCount());
+
+
+        EditText editText = (EditText) findViewById(R.id.edt);
+
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    // mInputMethodManager.toggleSoftInput(1,
+                    // InputMethodManager.RESULT_UNCHANGED_HIDDEN);
+                    toTouchMode(v);
+                }
+                return false;
+            }
+        });
+
+
     }
+
+
+
+    void toTouchMode(View v) {
+        v.requestFocus();
+        v.setFocusable(true);
+        v.setFocusableInTouchMode(true);
+
+        InputMethodManager mInputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+
+        mInputMethodManager.showSoftInput(v, 0);
+
+        mListView.setSelection(mDemoAdapter.getCount());
+
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
