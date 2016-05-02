@@ -2,13 +2,11 @@ package com.example.annuoaichengzhang.multiplelistviewdemo.item;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
-import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
+import com.example.annuoaichengzhang.multiplelistviewdemo.entity.Message;
 
 import butterknife.InjectView;
 
@@ -30,17 +28,17 @@ public class Item1View extends BaseItemView {
     }
 
     @Override
-    protected void initData(DemoEntity demoEntity) {
-        mCk.setChecked(demoEntity.isChecked());
-        mCk.setText(demoEntity.getContent());
+    protected void initData(Message message) {
+        mCk.setChecked(message.isChecked());
+        mCk.setText(message.getContent());
     }
 
     @Override
-    protected void setListener(final DemoEntity demoEntity) {
+    protected void setListener(final Message message) {
         mCk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                demoEntity.setIsChecked(isChecked);
+                message.setIsChecked(isChecked);
             }
         });
     }

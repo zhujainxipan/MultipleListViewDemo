@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
 import com.example.annuoaichengzhang.multiplelistviewdemo.bottom.BottomViewFactory;
-import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
+import com.example.annuoaichengzhang.multiplelistviewdemo.entity.Message;
 
 public class BottomActivity extends AppCompatActivity {
 
@@ -30,8 +30,8 @@ public class BottomActivity extends AppCompatActivity {
             }
         });
 
-        final DemoEntity demoEntity = new DemoEntity();
-        demoEntity.setContent("111111");
+        final Message message = new Message();
+        message.setContent("111111");
 
         final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.bottom_container);
 
@@ -39,7 +39,7 @@ public class BottomActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 linearLayout.removeAllViews();
-                linearLayout.addView(BottomViewFactory.createBottomView("bottom1", BottomActivity.this, demoEntity));
+                linearLayout.addView(BottomViewFactory.createBottomView("bottom1", BottomActivity.this, message));
             }
         });
 
@@ -47,7 +47,7 @@ public class BottomActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 linearLayout.removeAllViews();
-                linearLayout.addView(BottomViewFactory.createBottomView("bottom2", BottomActivity.this, demoEntity));
+                linearLayout.addView(BottomViewFactory.createBottomView("bottom2", BottomActivity.this, message));
             }
         });
 
@@ -55,7 +55,7 @@ public class BottomActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 linearLayout.removeAllViews();
-                linearLayout.addView(BottomViewFactory.createBottomView("bottom3", BottomActivity.this, demoEntity));
+                linearLayout.addView(BottomViewFactory.createBottomView("bottom3", BottomActivity.this, message));
             }
         });
 

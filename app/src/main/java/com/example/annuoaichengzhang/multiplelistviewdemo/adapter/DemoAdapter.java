@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.example.annuoaichengzhang.multiplelistviewdemo.item.DemoItemViewFactory;
-import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
+import com.example.annuoaichengzhang.multiplelistviewdemo.entity.Message;
 import com.example.annuoaichengzhang.multiplelistviewdemo.item.BaseItemView;
 import java.util.List;
 
@@ -14,10 +14,10 @@ import java.util.List;
  * Created by niehongtao on 16/4/9.
  */
 public class DemoAdapter extends BaseAdapter{
-    private List<DemoEntity> mDemoEntities;
+    private List<Message> mDemoEntities;
     private Context mContext;
 
-    public DemoAdapter(List<DemoEntity> demoEntities, Context context) {
+    public DemoAdapter(List<Message> demoEntities, Context context) {
         this.mDemoEntities = demoEntities;
         this.mContext = context;
     }

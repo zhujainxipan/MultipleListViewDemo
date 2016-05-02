@@ -2,12 +2,10 @@ package com.example.annuoaichengzhang.multiplelistviewdemo.item;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
+import com.example.annuoaichengzhang.multiplelistviewdemo.entity.Message;
 
 import butterknife.ButterKnife;
 
@@ -33,12 +31,12 @@ public abstract class BaseItemView extends FrameLayout {
 
     /**
      * 需要把外界的数据传递进来
-     * @param demoEntity
+     * @param message
      */
-    public void setData(DemoEntity demoEntity) {
+    public void setData(Message message) {
         // 顺序必须这样，否则无法解决错位的问题
-        setListener(demoEntity);
-        initData(demoEntity);
+        setListener(message);
+        initData(message);
     }
 
     final private void init() {
@@ -48,15 +46,15 @@ public abstract class BaseItemView extends FrameLayout {
 
     /**
      * 初始化数据
-     * @param demoEntity
+     * @param message
      */
-    protected abstract void initData(DemoEntity demoEntity);
+    protected abstract void initData(Message message);
 
     /**
      * 初始化点击
-     * @param demoEntity
+     * @param message
      */
-    protected abstract void setListener(DemoEntity demoEntity);
+    protected abstract void setListener(Message message);
 
     /**
      * 返回布局id

@@ -1,8 +1,6 @@
 package com.example.annuoaichengzhang.multiplelistviewdemo.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
@@ -15,7 +13,7 @@ import android.widget.ListView;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
 import com.example.annuoaichengzhang.multiplelistviewdemo.adapter.DemoAdapter;
-import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
+import com.example.annuoaichengzhang.multiplelistviewdemo.entity.Message;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,26 +31,26 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         mListView = (ListView) findViewById(R.id.post_lv);
-        List<DemoEntity> demoEntities = new ArrayList<>();
+        List<Message> demoEntities = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            DemoEntity demoEntity = new DemoEntity();
-            demoEntity.setType("item1");
-            demoEntity.setContent("item1:" + i);
-            demoEntities.add(demoEntity);
+            Message message = new Message();
+            message.setType("item1");
+            message.setContent("item1:" + i);
+            demoEntities.add(message);
         }
 
         for (int i = 0; i < 10; i++) {
-            DemoEntity demoEntity = new DemoEntity();
-            demoEntity.setType("item2");
-            demoEntity.setContent("item2:" + i);
-            demoEntities.add(demoEntity);
+            Message message = new Message();
+            message.setType("item2");
+            message.setContent("item2:" + i);
+            demoEntities.add(message);
         }
 
         for (int i = 0; i < 10; i++) {
-            DemoEntity demoEntity = new DemoEntity();
-            demoEntity.setType("item3");
-            demoEntity.setContent("item3:" + i);
-            demoEntities.add(demoEntity);
+            Message message = new Message();
+            message.setType("item3");
+            message.setContent("item3:" + i);
+            demoEntities.add(message);
         }
 
         mDemoAdapter = new DemoAdapter(demoEntities, this);

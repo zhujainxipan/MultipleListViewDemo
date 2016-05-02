@@ -1,27 +1,28 @@
 package com.example.annuoaichengzhang.multiplelistviewdemo.softinputtest;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
-import com.example.annuoaichengzhang.multiplelistviewdemo.adapter.DemoAdapter;
-import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
+import com.example.annuoaichengzhang.multiplelistviewdemo.entity.Message;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class ChatTestActivity extends AppCompatActivity {
 
     private ListView mListView;
     private Demo2Adapter mAdapter;
+    private List<Message> mMessageList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,19 +33,19 @@ public class ChatTestActivity extends AppCompatActivity {
 
 
         mListView = (ListView) findViewById(R.id.post_lv);
-        List<DemoEntity> demoEntities = new ArrayList<>();
+        mMessageList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            DemoEntity demoEntity = new DemoEntity();
-            demoEntity.setType("item1");
-            demoEntity.setContent("item1:" + i);
-            demoEntities.add(demoEntity);
+            Message message = new Message();
+            message.setType("item1");
+            message.setContent("item1:" + i);
+            mMessageList.add(message);
         }
 
 
-        mAdapter = new Demo2Adapter(demoEntities, this);
+        mAdapter = new Demo2Adapter(mMessageList, this);
         mListView.setAdapter(mAdapter);
 
-        EditText editText = (EditText) findViewById(R.id.edt);
+        final EditText editText = (EditText) findViewById(R.id.edt);
 
         editText.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -57,6 +58,25 @@ public class ChatTestActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
+
+        Button button = (Button) findViewById(R.id.btn_send);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Message message = new Message();
+                String content = editText.getText().toString();
+                if (content.isEmpty()) {
+                    Toast.makeText(ChatTestActivity.this, "内容不能为空", Toast.LENGTH_LONG);
+                } else {
+                    message.setContent(content);
+                    message.setState(Message.MSG_SENDING);
+                    createReplayMsg(message);
+                }
+            }
+        });
+
 
 
     }
@@ -74,6 +94,29 @@ public class ChatTestActivity extends AppCompatActivity {
         mListView.setSelection(mAdapter.getCount());
 
     }
+
+
+
+    private void createReplayMsg(final Message message) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000 * (new Random().nextInt(3) + 1));
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mMessageList.add(message);
+                            mAdapter.refresh(mMessageList);
+                        }
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
 
 
 }

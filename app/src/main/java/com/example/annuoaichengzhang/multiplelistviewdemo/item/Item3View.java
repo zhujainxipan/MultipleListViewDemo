@@ -7,7 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
-import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
+import com.example.annuoaichengzhang.multiplelistviewdemo.entity.Message;
 
 import butterknife.InjectView;
 
@@ -28,16 +28,16 @@ public class Item3View extends BaseItemView {
     }
 
     @Override
-    protected void initData(DemoEntity demoEntity) {
-        mContentTv.setText(demoEntity.getContent());
+    protected void initData(Message message) {
+        mContentTv.setText(message.getContent());
     }
 
     @Override
-    protected void setListener(final DemoEntity demoEntity) {
+    protected void setListener(final Message message) {
         mContentTv.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Item3View.super.mContext, demoEntity.getContent(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Item3View.super.mContext, message.getContent(), Toast.LENGTH_SHORT).show();
             }
         });
     }

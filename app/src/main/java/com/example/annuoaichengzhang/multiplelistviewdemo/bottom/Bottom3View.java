@@ -3,23 +3,23 @@ package com.example.annuoaichengzhang.multiplelistviewdemo.bottom;
 import android.content.Context;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
-import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
+import com.example.annuoaichengzhang.multiplelistviewdemo.entity.Message;
 
 /**
  * Created by niehongtao on 16/4/21.
  */
 public class Bottom3View extends BaseBottomView {
-    public Bottom3View(Context context, DemoEntity demoEntity) {
-        super(context, demoEntity);
+    public Bottom3View(Context context, Message message) {
+        super(context, message);
     }
 
     @Override
-    protected void initData(DemoEntity demoEntity) {
+    protected void initData(Message message) {
 
     }
 
     @Override
-    protected void setListener(DemoEntity demoEntity) {
+    protected void setListener(Message message) {
 
     }
 

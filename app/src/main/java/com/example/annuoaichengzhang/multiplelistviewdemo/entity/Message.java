@@ -3,11 +3,26 @@ package com.example.annuoaichengzhang.multiplelistviewdemo.entity;
 /**
  * Created by niehongtao on 16/4/9.
  */
-public class DemoEntity {
+public class Message {
+    public static final int MSG_SUCCESS = 0;
+    public static final int MSG_ERROR = 1;
+    public static final int MSG_SENDING = 2;
+
     private String type;
     private String content;
     private boolean isChecked;
     private boolean isActive;
+    private int state;
+
+
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
 
     public boolean isActive() {
         return isActive;

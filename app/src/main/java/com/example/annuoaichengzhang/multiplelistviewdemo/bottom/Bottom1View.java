@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
-import com.example.annuoaichengzhang.multiplelistviewdemo.entity.DemoEntity;
+import com.example.annuoaichengzhang.multiplelistviewdemo.entity.Message;
 
 /**
  * Created by niehongtao on 16/4/21.
@@ -14,17 +14,17 @@ public class Bottom1View extends BaseBottomView {
 
     private Button mView;
 
-    public Bottom1View(Context context, DemoEntity demoEntity) {
-        super(context, demoEntity);
+    public Bottom1View(Context context, Message message) {
+        super(context, message);
     }
 
     @Override
-    protected void initData(DemoEntity demoEntity) {
-        mView.setText(demoEntity.getContent());
+    protected void initData(Message message) {
+        mView.setText(message.getContent());
     }
 
     @Override
-    protected void setListener(DemoEntity demoEntity) {
+    protected void setListener(Message message) {
         mView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
