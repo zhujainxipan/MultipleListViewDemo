@@ -47,19 +47,6 @@ public class ChatTestActivity extends AppCompatActivity {
 
         final EditText editText = (EditText) findViewById(R.id.edt);
 
-        editText.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    // mInputMethodManager.toggleSoftInput(1,
-                    // InputMethodManager.RESULT_UNCHANGED_HIDDEN);
-                    toTouchMode(v);
-                }
-                return false;
-            }
-        });
-
-
 
         Button button = (Button) findViewById(R.id.btn_send);
         button.setOnClickListener(new View.OnClickListener() {
@@ -76,25 +63,7 @@ public class ChatTestActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
     }
-
-
-    void toTouchMode(View v) {
-        v.requestFocus();
-        v.setFocusable(true);
-        v.setFocusableInTouchMode(true);
-
-        InputMethodManager mInputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-
-        mInputMethodManager.showSoftInput(v, 0);
-
-        mListView.setSelection(mAdapter.getCount());
-
-    }
-
 
 
     private void createReplayMsg(final Message message) {
