@@ -3,9 +3,7 @@ package com.example.annuoaichengzhang.multiplelistviewdemo.softinputtest;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -23,6 +21,7 @@ public class ChatTestActivity extends AppCompatActivity {
     private ListView mListView;
     private Demo2Adapter mAdapter;
     private List<Message> mMessageList;
+    private CacheUtil mCacheUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,21 +51,24 @@ public class ChatTestActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Message message = new Message();
                 String content = editText.getText().toString();
                 if (content.isEmpty()) {
                     Toast.makeText(ChatTestActivity.this, "内容不能为空", Toast.LENGTH_LONG);
                 } else {
-                    message.setContent(content);
-                    message.setState(Message.MSG_SENDING);
-                    createReplayMsg(message);
+                    editText.setText("");
+
+                    mCacheUtil = new CacheUtil(mMessageList, mAdapter);
+
+                    Message cacheMessage = mCacheUtil.createCacheMessage(content);
+                    // 模拟发送
+                    sendReplayMsg(cacheMessage);
                 }
             }
         });
     }
 
 
-    private void createReplayMsg(final Message message) {
+    private void sendReplayMsg(final Message message) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -75,8 +77,7 @@ public class ChatTestActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            mMessageList.add(message);
-                            mAdapter.refresh(mMessageList);
+                            mCacheUtil.updateCacheMessage(message, Message.MSG_SUCCESS);
                         }
                     });
                 } catch (Exception e) {

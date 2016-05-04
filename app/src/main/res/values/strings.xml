@@ -4,4 +4,8 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_bottom">BottomActivity</string>
     <string name="title_activity_chat_test">ChatTestActivity</string>
+    <string name="title_activity_click_test">ClickTestActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

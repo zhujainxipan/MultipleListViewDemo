@@ -1,9 +1,11 @@
 package com.example.annuoaichengzhang.multiplelistviewdemo.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by niehongtao on 16/4/9.
  */
-public class Message {
+public class Message implements Serializable{
     public static final int MSG_SUCCESS = 0;
     public static final int MSG_ERROR = 1;
     public static final int MSG_SENDING = 2;

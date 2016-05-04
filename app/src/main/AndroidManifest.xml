@@ -33,7 +33,12 @@
             android:name=".softinputtest.ChatTestActivity"
             android:label="@string/title_activity_chat_test"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name=".softinputtest.ClickTestActivity"
+            android:label="@string/title_activity_click_test"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 

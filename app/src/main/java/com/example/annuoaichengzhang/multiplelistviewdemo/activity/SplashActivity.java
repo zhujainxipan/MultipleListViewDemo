@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
 import com.example.annuoaichengzhang.multiplelistviewdemo.softinputtest.ChatTestActivity;
+import com.example.annuoaichengzhang.multiplelistviewdemo.softinputtest.ClickTestActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -49,6 +50,14 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SplashActivity.this, ChatTestActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.lv_click).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SplashActivity.this, ClickTestActivity.class);
                 startActivity(intent);
             }
         });
