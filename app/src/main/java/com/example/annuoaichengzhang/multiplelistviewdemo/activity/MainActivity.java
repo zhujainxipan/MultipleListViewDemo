@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 Message message = demoEntities.get(mDemoAdapter.getCount() - 1);
                 message.setContent("ffsfffsdfdsfdfdfdfdfdfdfdfdfdfdfdsfdfdfdfdsfsdfdfsfsdfsd");
 
+                // 其实这里不一定非要使用这种方式遍历：可以把view放到map中，然后去寻找
                 for (int i = 0; i < mListView.getChildCount(); i++) {
                     BaseItemView childAt = (BaseItemView) mListView.getChildAt(i);
                     if (childAt.getTokenId().equals(message.getId())) {
