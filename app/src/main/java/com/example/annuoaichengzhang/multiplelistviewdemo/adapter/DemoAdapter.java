@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import com.example.annuoaichengzhang.multiplelistviewdemo.item.DemoItemViewFactory;
 import com.example.annuoaichengzhang.multiplelistviewdemo.entity.Message;
 import com.example.annuoaichengzhang.multiplelistviewdemo.item.BaseItemView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +18,7 @@ import java.util.List;
 public class DemoAdapter extends BaseAdapter{
     private List<Message> mDemoEntities;
     private Context mContext;
+    private ArrayList<BaseItemView> mBaseItemViews = new ArrayList<>();
 
     public DemoAdapter(List<Message> demoEntities, Context context) {
         this.mDemoEntities = demoEntities;
@@ -67,6 +70,22 @@ public class DemoAdapter extends BaseAdapter{
         ((BaseItemView)convertView).setData(mDemoEntities.get(position));
         ((BaseItemView)convertView).setTokenId(mDemoEntities.get(position).getId());
 
+        mBaseItemViews.add((BaseItemView)convertView);
+
         return convertView;
+    }
+
+
+
+    public void refreshView(Message message) {
+        for (BaseItemView baseItemView : mBaseItemViews) {
+            if (message.getId().equals(baseItemView.getTokenId())) {
+                baseItemView.setData(message);
+                baseItemView.setTokenId(message.getId());
+            }
+
+        }
+
+
     }
 }

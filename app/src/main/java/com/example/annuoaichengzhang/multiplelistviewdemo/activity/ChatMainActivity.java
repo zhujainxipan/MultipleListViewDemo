@@ -19,7 +19,7 @@ import com.example.annuoaichengzhang.multiplelistviewdemo.item.BaseItemView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class ChatMainActivity extends AppCompatActivity {
 
     private ListView mListView;
     private DemoAdapter mDemoAdapter;
@@ -41,19 +41,21 @@ public class MainActivity extends AppCompatActivity {
             demoEntities.add(message);
         }
 
-//        for (int i = 0; i < 10; i++) {
-//            Message message = new Message();
-//            message.setType("item2");
-//            message.setContent("item2:" + i);
-//            demoEntities.add(message);
-//        }
-//
-//        for (int i = 0; i < 10; i++) {
-//            Message message = new Message();
-//            message.setType("item3");
-//            message.setContent("item3:" + i);
-//            demoEntities.add(message);
-//        }
+        for (int i = 10; i < 20; i++) {
+            Message message = new Message();
+            message.setId(i + "");
+            message.setType("item2");
+            message.setContent("item2:" + i);
+            demoEntities.add(message);
+        }
+
+        for (int i = 20; i < 30; i++) {
+            Message message = new Message();
+            message.setId(i + "");
+            message.setType("item3");
+            message.setContent("item3:" + i);
+            demoEntities.add(message);
+        }
 
         mDemoAdapter = new DemoAdapter(demoEntities, this);
         mListView.setAdapter(mDemoAdapter);
@@ -64,23 +66,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Message message = demoEntities.get(mDemoAdapter.getCount() - 1);
                 message.setContent("ffsfffsdfdsfdfdfdfdfdfdfdfdfdfdfdsfdfdfdfdsfsdfdfsfsdfsd");
-
-                // 其实这里不一定非要使用这种方式遍历：可以把view放到map中，然后去寻找
-                for (int i = 0; i < mListView.getChildCount(); i++) {
-                    BaseItemView childAt = (BaseItemView) mListView.getChildAt(i);
-                    if (childAt.getTokenId().equals(message.getId())) {
-                        childAt.setData(message);
-                        childAt.setTokenId(message.getId());
-                    }
-                }
-
+                mDemoAdapter.refreshView(message);
             }
         });
 
 
     }
-
-
 
 
     @Override
