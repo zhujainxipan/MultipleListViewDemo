@@ -41,6 +41,10 @@ public class ChatTestActivity extends AppCompatActivity {
         }
 
 
+
+
+
+
         mAdapter = new Demo2Adapter(mMessageList, this);
         mListView.setAdapter(mAdapter);
 

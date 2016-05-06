@@ -14,6 +14,7 @@ import android.widget.ListView;
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
 import com.example.annuoaichengzhang.multiplelistviewdemo.adapter.DemoAdapter;
 import com.example.annuoaichengzhang.multiplelistviewdemo.entity.Message;
+import com.example.annuoaichengzhang.multiplelistviewdemo.item.BaseItemView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,31 +32,51 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         mListView = (ListView) findViewById(R.id.post_lv);
-        List<Message> demoEntities = new ArrayList<>();
+        final List<Message> demoEntities = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Message message = new Message();
+            message.setId(i + "");
             message.setType("item1");
             message.setContent("item1:" + i);
             demoEntities.add(message);
         }
 
-        for (int i = 0; i < 10; i++) {
-            Message message = new Message();
-            message.setType("item2");
-            message.setContent("item2:" + i);
-            demoEntities.add(message);
-        }
-
-        for (int i = 0; i < 10; i++) {
-            Message message = new Message();
-            message.setType("item3");
-            message.setContent("item3:" + i);
-            demoEntities.add(message);
-        }
+//        for (int i = 0; i < 10; i++) {
+//            Message message = new Message();
+//            message.setType("item2");
+//            message.setContent("item2:" + i);
+//            demoEntities.add(message);
+//        }
+//
+//        for (int i = 0; i < 10; i++) {
+//            Message message = new Message();
+//            message.setType("item3");
+//            message.setContent("item3:" + i);
+//            demoEntities.add(message);
+//        }
 
         mDemoAdapter = new DemoAdapter(demoEntities, this);
         mListView.setAdapter(mDemoAdapter);
         mListView.setSelection(mDemoAdapter.getCount());
+
+        findViewById(R.id.btn_send).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Message message = demoEntities.get(mDemoAdapter.getCount() - 1);
+                message.setContent("ffsfffsdfdsfdfdfdfdfdfdfdfdfdfdfdsfdfdfdfdsfsdfdfsfsdfsd");
+
+                for (int i = 0; i < mListView.getChildCount(); i++) {
+                    BaseItemView childAt = (BaseItemView) mListView.getChildAt(i);
+                    if (childAt.getTokenId().equals(message.getId())) {
+                        childAt.setData(message);
+                        childAt.setTokenId(message.getId());
+                    }
+                }
+
+            }
+        });
+
+
     }
 
 

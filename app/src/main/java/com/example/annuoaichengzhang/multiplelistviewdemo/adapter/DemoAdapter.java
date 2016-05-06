@@ -65,6 +65,8 @@ public class DemoAdapter extends BaseAdapter{
             convertView = DemoItemViewFactory.createBaseItemView(type, mContext);
         }
         ((BaseItemView)convertView).setData(mDemoEntities.get(position));
+        ((BaseItemView)convertView).setTokenId(mDemoEntities.get(position).getId());
+
         return convertView;
     }
 }
