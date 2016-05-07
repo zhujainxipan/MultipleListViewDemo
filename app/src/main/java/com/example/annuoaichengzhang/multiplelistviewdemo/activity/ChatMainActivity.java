@@ -37,6 +37,7 @@ public class ChatMainActivity extends AppCompatActivity {
         mListView = (ListView) findViewById(R.id.post_lv);
 
         mListView.addHeaderView(LayoutInflater.from(this).inflate(R.layout.item3_view, null));
+        mListView.addHeaderView(LayoutInflater.from(this).inflate(R.layout.item2_view, null));
 
         mDemoEntities = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
@@ -68,7 +69,7 @@ public class ChatMainActivity extends AppCompatActivity {
         findViewById(R.id.btn_send).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Message message = mDemoEntities.get(1);
+                Message message = mDemoEntities.get(10);
                 message.setContent("ffsfffsdfdsfdfdfdfdfdfdfdfdfdfdfdsfdfdfdfdsfsdfdfsfsdfsd");
                 updateSingleRow(message);
             }
@@ -78,25 +79,26 @@ public class ChatMainActivity extends AppCompatActivity {
     }
 
 
-
     private void updateSingleRow(Message tempMessage) {
-            int start = mListView.getFirstVisiblePosition();
+        int start = mListView.getFirstVisiblePosition();
+        int end = mListView.getLastVisiblePosition();
 
-        Log.d("start", start + "first" + mListView.getFirstVisiblePosition() + "last" + mListView.getLastVisiblePosition());
-            for (int i = start, j = mListView.getLastVisiblePosition(); i <= j; i++) {
-                Message message = (Message) mDemoAdapter.getItem(i);
-                if (message == null) {
-                    Log.d("id..", tempMessage.getId() + "");
-                }
+//        start = start < 0 ? 0 : start;
 
-                Log.d("id1..", tempMessage.getId() +  "fsfsf" + message.getId());
+        Log.d("start...", "start:   " + start + "end:   " + end  + "conut:   " + mDemoAdapter.getCount());
 
-                if (tempMessage.getId() == message.getId()) {
-                    View view = mListView.getChildAt(i  - start + mListView.getHeaderViewsCount());
-                    mDemoAdapter.getView(i, view, mListView);
-                    break;
-                }
+        for (int i = start, j = end; i <= j; i++) {
+
+            if (i > mDemoAdapter.getCount() - 1) {
+                return;
             }
+            Message message = (Message) mDemoAdapter.getItem(i);
+            if (tempMessage.getId() == message.getId()) {
+                BaseItemView itemView = (BaseItemView) mListView.getChildAt(i - start + mListView.getHeaderViewsCount());
+                itemView.setData(tempMessage);
+                break;
+            }
+        }
 
     }
 
