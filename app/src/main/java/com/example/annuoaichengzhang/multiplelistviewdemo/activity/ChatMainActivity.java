@@ -78,7 +78,7 @@ public class ChatMainActivity extends AppCompatActivity {
 
     }
 
-
+    // 此方案仍存在问题，并不能完全解决问题，在分页加载的时候
     private void updateSingleRow(Message tempMessage) {
         int start = mListView.getFirstVisiblePosition();
         int end = mListView.getLastVisiblePosition();
