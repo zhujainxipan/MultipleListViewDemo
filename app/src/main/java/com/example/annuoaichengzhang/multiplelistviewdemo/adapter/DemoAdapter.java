@@ -61,23 +61,20 @@ public class DemoAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Log.d(":nht...", "..." + convertView);
         Message message = mDemoEntities.get(position);
-        message.setId(position);
         String type = message.getType();
         if (convertView == null) {
-            Log.d(":nht...", "....convertView == null");
             convertView = DemoItemViewFactory.createBaseItemView(type, mContext);
         }
-        ((BaseItemView)convertView).setData(message);
-
+        BaseItemView itemView = (BaseItemView) convertView;
+        itemView.setData(message);
+        itemView.setTokenId(message.getId());
 //        mBaseItemViews.add((BaseItemView)convertView);
-
         return convertView;
     }
 
 
-// 此方案不好
+// 方案1：通过将view缓存下来
 //    public void refreshView(Message message) {
 //        for (BaseItemView baseItemView : mBaseItemViews) {
 //            if (message.getId().equals(baseItemView.getTokenId())) {

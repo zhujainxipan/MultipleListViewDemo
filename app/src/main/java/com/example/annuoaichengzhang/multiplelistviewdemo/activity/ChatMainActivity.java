@@ -42,7 +42,7 @@ public class ChatMainActivity extends AppCompatActivity {
         mDemoEntities = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
             Message message = new Message();
-//            message.setId(i);
+            message.setId(i);
             message.setType("item1");
             message.setContent("item1:" + i);
             mDemoEntities.add(message);
@@ -69,7 +69,7 @@ public class ChatMainActivity extends AppCompatActivity {
         findViewById(R.id.btn_send).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Message message = mDemoEntities.get(10);
+                Message message = mDemoEntities.get(29);
                 message.setContent("ffsfffsdfdsfdfdfdfdfdfdfdfdfdfdfdsfdfdfdfdsfsdfdfsfsdfsd");
                 updateSingleRow(message);
             }
@@ -78,27 +78,38 @@ public class ChatMainActivity extends AppCompatActivity {
 
     }
 
-    // 此方案仍存在问题，并不能完全解决问题，在分页加载的时候
-    private void updateSingleRow(Message tempMessage) {
-        int start = mListView.getFirstVisiblePosition();
-        int end = mListView.getLastVisiblePosition();
-
-//        start = start < 0 ? 0 : start;
-
-        Log.d("start...", "start:   " + start + "end:   " + end  + "conut:   " + mDemoAdapter.getCount());
-
-        for (int i = start, j = end; i <= j; i++) {
-
-            if (i > mDemoAdapter.getCount() - 1) {
-                return;
-            }
-            Message message = (Message) mDemoAdapter.getItem(i);
-            if (tempMessage.getId() == message.getId()) {
-                BaseItemView itemView = (BaseItemView) mListView.getChildAt(i - start + mListView.getHeaderViewsCount());
-                itemView.setData(tempMessage);
+    // 方案3：最佳方案
+    private void updateSingleRow(Message message) {
+        for (int i = 0; i < mListView.getChildCount(); i++) {
+            View view =  mListView.getChildAt(i);
+            if (view instanceof BaseItemView && ((BaseItemView)view).getTokenId() == message.getId()) {
+                ((BaseItemView)view).setData(message);
                 break;
-            }
         }
+    }
+
+
+    // 方案2：谷歌推荐的方案。此方案仍存在问题，并不能完全解决问题，在分页加载的时候
+//    private void updateSingleRow(Message tempMessage) {
+//        int start = mListView.getFirstVisiblePosition();
+//        int end = mListView.getLastVisiblePosition();
+//
+////        start = start < 0 ? 0 : start;
+//
+//        Log.d("start...", "start:   " + start + "end:   " + end  + "conut:   " + mDemoAdapter.getCount());
+//
+//        for (int i = start, j = end; i <= j; i++) {
+//
+//            if (i > mDemoAdapter.getCount() - 1) {
+//                return;
+//            }
+//            Message message = (Message) mDemoAdapter.getItem(i);
+//            if (tempMessage.getId() == message.getId()) {
+//                BaseItemView itemView = (BaseItemView) mListView.getChildAt(i - start + mListView.getHeaderViewsCount());
+//                itemView.setData(tempMessage);
+//                break;
+//            }
+//        }
 
     }
 
