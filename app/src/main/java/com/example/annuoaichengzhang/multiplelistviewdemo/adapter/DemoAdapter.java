@@ -63,7 +63,7 @@ public class DemoAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
         Log.d(":nht...", "..." + convertView);
         Message message = mDemoEntities.get(position);
-//        message.setId(position);
+        message.setId(position);
         String type = message.getType();
         if (convertView == null) {
             Log.d(":nht...", "....convertView == null");

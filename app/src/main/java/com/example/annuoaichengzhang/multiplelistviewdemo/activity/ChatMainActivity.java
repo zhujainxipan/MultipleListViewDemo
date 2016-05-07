@@ -41,7 +41,7 @@ public class ChatMainActivity extends AppCompatActivity {
         mDemoEntities = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
             Message message = new Message();
-            message.setId(i);
+//            message.setId(i);
             message.setType("item1");
             message.setContent("item1:" + i);
             mDemoEntities.add(message);
