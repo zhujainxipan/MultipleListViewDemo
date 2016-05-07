@@ -3,6 +3,8 @@ package com.example.annuoaichengzhang.multiplelistviewdemo.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Menu;
@@ -23,6 +25,7 @@ public class ChatMainActivity extends AppCompatActivity {
 
     private ListView mListView;
     private DemoAdapter mDemoAdapter;
+    private List<Message> mDemoEntities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,44 +35,68 @@ public class ChatMainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         mListView = (ListView) findViewById(R.id.post_lv);
-        final List<Message> demoEntities = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+
+        mListView.addHeaderView(LayoutInflater.from(this).inflate(R.layout.item3_view, null));
+
+        mDemoEntities = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
             Message message = new Message();
-            message.setId(i + "");
+            message.setId(i);
             message.setType("item1");
             message.setContent("item1:" + i);
-            demoEntities.add(message);
+            mDemoEntities.add(message);
         }
 
-        for (int i = 10; i < 20; i++) {
-            Message message = new Message();
-            message.setId(i + "");
-            message.setType("item2");
-            message.setContent("item2:" + i);
-            demoEntities.add(message);
-        }
+//        for (int i = 10; i < 20; i++) {
+//            Message message = new Message();
+//            message.setType("item2");
+//            message.setContent("item2:" + i);
+//            mDemoEntities.add(message);
+//        }
+//
+//        for (int i = 20; i < 30; i++) {
+//            Message message = new Message();
+//            message.setType("item3");
+//            message.setContent("item3:" + i);
+//            mDemoEntities.add(message);
+//        }
 
-        for (int i = 20; i < 30; i++) {
-            Message message = new Message();
-            message.setId(i + "");
-            message.setType("item3");
-            message.setContent("item3:" + i);
-            demoEntities.add(message);
-        }
-
-        mDemoAdapter = new DemoAdapter(demoEntities, this);
+        mDemoAdapter = new DemoAdapter(mDemoEntities, this);
         mListView.setAdapter(mDemoAdapter);
         mListView.setSelection(mDemoAdapter.getCount());
 
         findViewById(R.id.btn_send).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Message message = demoEntities.get(mDemoAdapter.getCount() - 1);
+                Message message = mDemoEntities.get(1);
                 message.setContent("ffsfffsdfdsfdfdfdfdfdfdfdfdfdfdfdsfdfdfdfdsfsdfdfsfsdfsd");
-                mDemoAdapter.refreshView(message);
+                updateSingleRow(message);
             }
         });
 
+
+    }
+
+
+
+    private void updateSingleRow(Message tempMessage) {
+            int start = mListView.getFirstVisiblePosition();
+
+        Log.d("start", start + "first" + mListView.getFirstVisiblePosition() + "last" + mListView.getLastVisiblePosition());
+            for (int i = start, j = mListView.getLastVisiblePosition(); i <= j; i++) {
+                Message message = (Message) mDemoAdapter.getItem(i);
+                if (message == null) {
+                    Log.d("id..", tempMessage.getId() + "");
+                }
+
+                Log.d("id1..", tempMessage.getId() +  "fsfsf" + message.getId());
+
+                if (tempMessage.getId() == message.getId()) {
+                    View view = mListView.getChildAt(i  - start + mListView.getHeaderViewsCount());
+                    mDemoAdapter.getView(i, view, mListView);
+                    break;
+                }
+            }
 
     }
 

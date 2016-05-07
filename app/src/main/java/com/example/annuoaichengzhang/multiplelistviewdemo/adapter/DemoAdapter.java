@@ -18,7 +18,7 @@ import java.util.List;
 public class DemoAdapter extends BaseAdapter{
     private List<Message> mDemoEntities;
     private Context mContext;
-    private ArrayList<BaseItemView> mBaseItemViews = new ArrayList<>();
+//    private ArrayList<BaseItemView> mBaseItemViews = new ArrayList<>();
 
     public DemoAdapter(List<Message> demoEntities, Context context) {
         this.mDemoEntities = demoEntities;
@@ -62,30 +62,29 @@ public class DemoAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Log.d(":nht...", "..." + convertView);
-        String type = mDemoEntities.get(position).getType();
+        Message message = mDemoEntities.get(position);
+//        message.setId(position);
+        String type = message.getType();
         if (convertView == null) {
             Log.d(":nht...", "....convertView == null");
             convertView = DemoItemViewFactory.createBaseItemView(type, mContext);
         }
-        ((BaseItemView)convertView).setData(mDemoEntities.get(position));
-        ((BaseItemView)convertView).setTokenId(mDemoEntities.get(position).getId());
+        ((BaseItemView)convertView).setData(message);
 
-        mBaseItemViews.add((BaseItemView)convertView);
+//        mBaseItemViews.add((BaseItemView)convertView);
 
         return convertView;
     }
 
 
+// 此方案不好
+//    public void refreshView(Message message) {
+//        for (BaseItemView baseItemView : mBaseItemViews) {
+//            if (message.getId().equals(baseItemView.getTokenId())) {
+//                baseItemView.setData(message);
+//                baseItemView.setTokenId(message.getId());
+//            }
+//
+//        }
 
-    public void refreshView(Message message) {
-        for (BaseItemView baseItemView : mBaseItemViews) {
-            if (message.getId().equals(baseItemView.getTokenId())) {
-                baseItemView.setData(message);
-                baseItemView.setTokenId(message.getId());
-            }
-
-        }
-
-
-    }
 }

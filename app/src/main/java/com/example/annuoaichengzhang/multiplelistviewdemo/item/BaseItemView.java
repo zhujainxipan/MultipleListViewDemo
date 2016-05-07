@@ -14,15 +14,6 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseItemView extends FrameLayout {
     protected Context mContext;
-    private String tokenId;
-
-    public String getTokenId() {
-        return tokenId;
-    }
-
-    public void setTokenId(String tokenId) {
-        this.tokenId = tokenId;
-    }
 
     public BaseItemView(Context context) {
         super(context);
