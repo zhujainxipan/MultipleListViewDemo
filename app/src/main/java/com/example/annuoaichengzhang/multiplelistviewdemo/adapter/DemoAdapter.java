@@ -62,13 +62,14 @@ public class DemoAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Message message = mDemoEntities.get(position);
+        message.setPosition(position);
         String type = message.getType();
         if (convertView == null) {
             convertView = DemoItemViewFactory.createBaseItemView(type, mContext);
         }
         BaseItemView itemView = (BaseItemView) convertView;
         itemView.setData(message);
-        itemView.setTokenId(message.getId());
+        itemView.setPosition(position);
 //        mBaseItemViews.add((BaseItemView)convertView);
         return convertView;
     }

@@ -15,15 +15,14 @@ public class Message implements Serializable{
     private boolean isChecked;
     private boolean isActive;
     private int state;
-    private int id = 0;
+    private int position = 0;
 
-
-    public int getId() {
-        return id;
+    public int getPosition() {
+        return position;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public int getState() {

@@ -42,7 +42,6 @@ public class ChatMainActivity extends AppCompatActivity {
         mDemoEntities = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
             Message message = new Message();
-            message.setId(i);
             message.setType("item1");
             message.setContent("item1:" + i);
             mDemoEntities.add(message);
@@ -69,7 +68,7 @@ public class ChatMainActivity extends AppCompatActivity {
         findViewById(R.id.btn_send).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Message message = mDemoEntities.get(29);
+                Message message = mDemoEntities.get(10);
                 message.setContent("ffsfffsdfdsfdfdfdfdfdfdfdfdfdfdfdsfdfdfdfdsfsdfdfsfsdfsd");
                 updateSingleRow(message);
             }
@@ -82,8 +81,8 @@ public class ChatMainActivity extends AppCompatActivity {
     private void updateSingleRow(Message message) {
         for (int i = 0; i < mListView.getChildCount(); i++) {
             View view =  mListView.getChildAt(i);
-            if (view instanceof BaseItemView && ((BaseItemView)view).getTokenId() == message.getId()) {
-                ((BaseItemView)view).setData(message);
+            if (view instanceof BaseItemView && ((BaseItemView)view).getPosition() == message.getPosition()) {
+                mDemoAdapter.getView(message.getPosition(), view, mListView);
                 break;
         }
     }

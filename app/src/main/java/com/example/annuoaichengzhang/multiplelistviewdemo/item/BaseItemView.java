@@ -14,10 +14,14 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseItemView extends FrameLayout {
     protected Context mContext;
-    private int mTokenId;
+    private int mPosition;
 
-    public int getTokenId() {
-        return mTokenId;
+    public int getPosition() {
+        return mPosition;
+    }
+
+    public void setPosition(int position) {
+        mPosition = position;
     }
 
     public BaseItemView(Context context) {
@@ -66,7 +70,4 @@ public abstract class BaseItemView extends FrameLayout {
      */
     protected abstract int getViewLayoutId();
 
-    public void setTokenId(int tokenId) {
-        mTokenId = tokenId;
-    }
 }
