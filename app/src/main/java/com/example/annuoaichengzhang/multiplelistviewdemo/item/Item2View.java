@@ -27,8 +27,8 @@ public class Item2View extends BaseItemView {
 
     @Override
     protected void initData(Message message) {
-        String str = "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd";
-        mEtvPresentContent.setConvertText2(!message.isActive(), str);
+        mEtvPresentContent.setIsExpandFootViewAtBottom(false);
+        mEtvPresentContent.setConvertText2(!message.isActive(), message.getContent());
     }
 
     @Override
