@@ -61,6 +61,9 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ChatMenuView chatMenuView = (ChatMenuView) findViewById(R.id.mv_test);
+        chatMenuView.setParent(chatMenuView);
     }
 
 }

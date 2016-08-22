@@ -45,6 +45,12 @@
         android:layout_below="@id/lv_softinputtest"
         />
 
+    <com.example.annuoaichengzhang.multiplelistviewdemo.activity.ChatMenuView
+        android:id="@+id/mv_test"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        ></com.example.annuoaichengzhang.multiplelistviewdemo.activity.ChatMenuView>
 
 
 </RelativeLayout>
