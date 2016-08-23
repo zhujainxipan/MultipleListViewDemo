@@ -94,7 +94,8 @@ public class ChatMenuView extends LinearLayout {
         int[] location = new int[2];
         anchor.getLocationOnScreen(location);
         int y = getHeight();
-        int x = (location[0] + anchor.getWidth() / 2) - contentV.getMeasuredWidth() / 2;
+//        int x = (location[0] + anchor.getWidth() / 2) - contentV.getMeasuredWidth() / 2;
+        int x = location[0];
         mpopupWindow.showAtLocation(anchor, Gravity.BOTTOM | Gravity.LEFT, x, y);
 
     }
