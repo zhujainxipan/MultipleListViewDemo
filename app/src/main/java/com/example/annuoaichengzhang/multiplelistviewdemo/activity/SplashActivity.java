@@ -2,8 +2,6 @@ package com.example.annuoaichengzhang.multiplelistviewdemo.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -14,6 +12,8 @@ import com.example.annuoaichengzhang.multiplelistviewdemo.softinputtest.ClickTes
 
 public class SplashActivity extends AppCompatActivity {
 
+    private boolean isShow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,14 +21,6 @@ public class SplashActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         findViewById(R.id.mt_lv).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +53,18 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ChatMenuView menuView = (ChatMenuView) findViewById(R.id.mv_test);
+        menuView.setIChatViewListener(new ChatMenuView.IChatViewListener() {
+            @Override
+            public void toX() {
+                Intent intent = new Intent(SplashActivity.this, BottomActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
 
     }
 

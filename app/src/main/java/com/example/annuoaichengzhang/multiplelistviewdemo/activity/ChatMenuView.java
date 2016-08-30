@@ -1,6 +1,7 @@
 package com.example.annuoaichengzhang.multiplelistviewdemo.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -13,6 +14,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.annuoaichengzhang.multiplelistviewdemo.R;
+import com.example.annuoaichengzhang.multiplelistviewdemo.softinputtest.ChatTestActivity;
 
 /**
  * Created by niehongtao on 16/8/22.
@@ -24,6 +26,16 @@ public class ChatMenuView extends LinearLayout {
     private TextView mTv3;
     private TextView mTv4;
     PopupWindow mpopupWindow;
+    private IChatViewListener mIChatViewListener;
+
+
+    public void setIChatViewListener(IChatViewListener IChatViewListener) {
+        mIChatViewListener = IChatViewListener;
+    }
+
+    interface IChatViewListener {
+        void toX();
+    }
 
 
     public ChatMenuView(Context context) {
@@ -81,6 +93,13 @@ public class ChatMenuView extends LinearLayout {
         if (mpopupWindow != null) {
             mpopupWindow.dismiss();
         }
+
+        contentV.findViewById(R.id.tv1).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mIChatViewListener.toX();
+            }
+        });
 
         mpopupWindow = new PopupWindow(getContext());
         mpopupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
